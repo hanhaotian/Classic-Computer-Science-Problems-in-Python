@@ -1,0 +1,57 @@
+# 6
+# 538325
+
+# 3 3 5 4 4 4
+
+def calDelete(big, nums):
+    if len(nums) == 0 :
+        return 0
+    d = 0
+    tag = nums[0]
+    for i in nums[1:]:
+        if i <= tag:
+            d += 1
+        elif i > big:
+            return d
+    return d
+
+def search_sum(tag,infos):
+    sum = 1
+    if len(infos) == 0 :
+        return sum
+    if tag <= infos[0]:
+        if max(infos) > infos[0]:
+            maxF =  max(infos)
+            m = 0
+            while m < len(infos):
+                if infos[m] == maxF:
+                    return sum + 1
+                else:
+                    sum += 1
+                m += 1
+        return sum + 1
+    else:
+        sum += search_sum(tag,infos[0+1:])
+        sum -= calDelete(tag, infos)
+
+    return sum
+
+
+n = 10
+aim = [73289, 45963, 22522, 44454, 58143, 31977, 59209,  85753, 45063, 9507]
+res = [0 for j in range(n)]
+res2 = [0 for i in range(n)]
+for i in range(n):
+    # print(aim[i+1:])
+    res[i] = search_sum(aim[i],aim[i+1:])
+print("one",res)
+
+aim_r = list(reversed(aim))
+for i in range(n):
+    # res[n -1 - i] += search_sum(aim_r[i],aim_r[i+1:]) - 1
+    res2[i] = search_sum(aim_r[i], aim_r[i + 1:])
+
+
+print("two",res2)
+
+# 5 7 7 7 7 5 5 4 3 3
