@@ -1,0 +1,28 @@
+matrix = [
+ [ 1, 2, 3 ],
+ [ 4, 5, 6 ],
+ [ 7, 8, 9 ]
+ ]
+print(matrix)
+print(len(matrix))
+m = len(matrix[0])
+n= len(matrix)
+vist = [[True] * m for i in range(n)]
+print(vist)
+res =[]
+
+for _ in range(m * n)
+    if vist[i][j]:
+        res.append(matrix[i][j])
+        
+    if j < m:
+        j+=1
+    elif j == m-1 and i < n and i > 0:
+        i+=1
+    elif i == n-1 and j < m and j > 0:
+        j+=1
+    elif i == n -1 and j == m - 1 and j >0:
+        j -= 1
+    else :
+        return
+print(res)
